@@ -20,5 +20,11 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Readify"
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 include(":app")
- 
+include(":features:articles:presentation")
+include(":designsystem")
+include(":features:articles:domain")
+include(":features:articles:data")
+include(":core:data")

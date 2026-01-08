@@ -1,4 +1,4 @@
-package com.innovation.readify.ui.theme
+package com.innovation.readify.designsystem.theme
 
 import androidx.compose.ui.graphics.Color
 

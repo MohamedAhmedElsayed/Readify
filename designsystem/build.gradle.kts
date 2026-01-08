@@ -1,10 +1,11 @@
 plugins {
   alias(libs.plugins.android.library)
   alias(libs.plugins.kotlin.android)
+  alias(libs.plugins.kotlin.compose)
 }
 
 android {
-  namespace = "com.innovation.designsystem"
+  namespace = "com.innovation.readify.designsystem"
   compileSdk = 36
 
   defaultConfig {

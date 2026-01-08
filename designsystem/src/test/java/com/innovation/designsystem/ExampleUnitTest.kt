@@ -1,4 +1,4 @@
-package com.innovation.designsystem
+package com.innovation.readify.designsystem
 
 import org.junit.Test
 

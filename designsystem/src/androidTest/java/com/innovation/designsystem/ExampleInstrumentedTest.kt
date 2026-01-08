@@ -1,4 +1,4 @@
-package com.innovation.designsystem
+package com.innovation.readify.designsystem
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

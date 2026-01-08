@@ -15,6 +15,19 @@ android {
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     consumerProguardFiles("consumer-rules.pro")
+    buildConfigField(
+      "String",
+      "API_KEY",
+      "\"${project.findProperty("API_KEY") ?: ""}\""
+    )
+    buildConfigField(
+      "String",
+      "BASE_URL",
+      "\"https://newsapi.org/v2/\""
+    )
+  }
+  buildFeatures {
+    buildConfig = true
   }
 
   buildTypes {
@@ -40,10 +53,18 @@ dependencies {
 
   implementation(libs.hilt.android)
   ksp(libs.hilt.compiler)
-  
-  // Kotlin Serialization
-  implementation(libs.kotlinx.serialization.json)
-  
+
+// Kotlin Serialization
+  api(libs.kotlinx.serialization.json)
+
+// Retrofit
+  api(libs.retrofit)
+  implementation(libs.retrofit.kotlinx.serialization)
+
+// OkHttp
+  implementation(libs.okhttp)
+  implementation(libs.okhttp.logging.interceptor)
+
   testImplementation(libs.junit)
   androidTestImplementation(libs.androidx.junit)
   androidTestImplementation(libs.androidx.espresso.core)

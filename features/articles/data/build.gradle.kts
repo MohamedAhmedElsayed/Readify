@@ -15,16 +15,6 @@ android {
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     consumerProguardFiles("consumer-rules.pro")
-    buildConfigField(
-      "String",
-      "API_KEY",
-      "\"${project.findProperty("API_KEY") ?: ""}\""
-    )
-    buildConfigField(
-      "String",
-      "BASE_URL",
-      "\"https://newsapi.org/v2/\""
-    )
   }
 
   buildTypes {
@@ -60,4 +50,7 @@ dependencies {
   testImplementation(libs.junit)
   androidTestImplementation(libs.androidx.junit)
   androidTestImplementation(libs.androidx.espresso.core)
+
+  implementation(projects.core.data)
+  implementation(projects.features.articles.domain)
 }

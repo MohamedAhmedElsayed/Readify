@@ -59,6 +59,7 @@ dependencies {
   implementation(projects.features.articles.data)
   implementation(projects.features.articles.domain)
   implementation(projects.features.articles.presentation)
+  implementation(projects.designsystem)
 
   // Hilt
   implementation(libs.hilt.android)

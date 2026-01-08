@@ -1,6 +1,7 @@
 plugins {
   alias(libs.plugins.android.library)
   alias(libs.plugins.kotlin.android)
+  alias(libs.plugins.kotlin.serialization)
   alias(libs.plugins.hilt)
   alias(libs.plugins.ksp)
 }
@@ -14,6 +15,16 @@ android {
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     consumerProguardFiles("consumer-rules.pro")
+    buildConfigField(
+      "String",
+      "API_KEY",
+      "\"${project.findProperty("API_KEY") ?: ""}\""
+    )
+    buildConfigField(
+      "String",
+      "BASE_URL",
+      "\"https://newsapi.org/v2/\""
+    )
   }
 
   buildTypes {
@@ -29,6 +40,9 @@ android {
   kotlinOptions {
     jvmTarget = "11"
   }
+  buildFeatures {
+    buildConfig = true
+  }
 }
 
 dependencies {
@@ -39,7 +53,10 @@ dependencies {
 
   implementation(libs.hilt.android)
   ksp(libs.hilt.compiler)
-  
+
+  // Kotlin Serialization
+  implementation(libs.kotlinx.serialization.json)
+
   testImplementation(libs.junit)
   androidTestImplementation(libs.androidx.junit)
   androidTestImplementation(libs.androidx.espresso.core)

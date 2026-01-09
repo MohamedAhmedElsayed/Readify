@@ -7,6 +7,6 @@ data class Articles(
 
 data class Article(
   val title: String?,
-  val url: String?,
+  val imageUrl: String?,
   val description: String?
 )

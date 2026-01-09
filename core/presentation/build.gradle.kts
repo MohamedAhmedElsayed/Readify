@@ -2,10 +2,13 @@ plugins {
   alias(libs.plugins.android.library)
   alias(libs.plugins.kotlin.android)
   alias(libs.plugins.kotlin.compose)
+  alias(libs.plugins.hilt)
+  alias(libs.plugins.ksp)
 }
 
+
 android {
-  namespace = "com.innovation.readify.designsystem"
+  namespace = "com.innovation.readify.presentation"
   compileSdk = 36
 
   defaultConfig {
@@ -28,25 +31,38 @@ android {
   kotlinOptions {
     jvmTarget = "11"
   }
+  buildFeatures {
+    compose = true
+  }
 }
 
 dependencies {
 
-  api(libs.androidx.core.ktx)
-  api(libs.androidx.appcompat)
-  api(libs.material)
-  testImplementation(libs.junit)
-  androidTestImplementation(libs.androidx.junit)
-  androidTestImplementation(libs.androidx.espresso.core)
+  // Compose dependencies
+  implementation(platform(libs.androidx.compose.bom))
+  implementation(libs.androidx.compose.ui)
+  implementation(libs.androidx.compose.ui.graphics)
+  implementation(libs.androidx.compose.ui.tooling.preview)
+  implementation(libs.androidx.compose.material3)
+  implementation(libs.androidx.activity.compose)
+  implementation(libs.androidx.lifecycle.runtime.ktx)
+  
+  // Lifecycle ViewModel - required for viewModelScope
+  implementation(libs.androidx.lifecycle.viewmodel.ktx)
+  
+  // Coroutines
+  implementation(libs.kotlinx.coroutines.core)
+  implementation(libs.kotlinx.coroutines.android)
 
-  api(libs.androidx.core.ktx)
-  api(libs.androidx.lifecycle.runtime.ktx)
-  api(libs.androidx.activity.compose)
-  api(platform(libs.androidx.compose.bom))
-  api(libs.androidx.compose.ui)
-  api(libs.androidx.compose.ui.graphics)
-  api(libs.androidx.compose.ui.tooling.preview)
-  api(libs.androidx.compose.material3)
+  // Project dependencies
+  api(projects.designsystem)
+  implementation(projects.features.articles.domain)
+
+  // Hilt
+  implementation(libs.hilt.android)
+  ksp(libs.hilt.compiler)
+
+  // Test dependencies
   testImplementation(libs.junit)
   androidTestImplementation(libs.androidx.junit)
   androidTestImplementation(libs.androidx.espresso.core)
@@ -54,5 +70,5 @@ dependencies {
   androidTestImplementation(libs.androidx.compose.ui.test.junit4)
   debugImplementation(libs.androidx.compose.ui.tooling)
   debugImplementation(libs.androidx.compose.ui.test.manifest)
-  api(libs.coil.compose)
+
 }

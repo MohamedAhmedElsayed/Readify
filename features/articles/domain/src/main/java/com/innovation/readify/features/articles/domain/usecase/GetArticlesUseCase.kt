@@ -6,6 +6,7 @@ import javax.inject.Inject
 class GetArticlesUseCase @Inject constructor(
   private val articlesRepository: ArticlesRepository
 ) {
+
   suspend operator fun invoke(
     page: Int,
     pageSize: Int,

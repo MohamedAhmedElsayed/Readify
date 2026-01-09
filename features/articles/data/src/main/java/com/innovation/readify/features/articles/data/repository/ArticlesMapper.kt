@@ -2,16 +2,11 @@ package com.innovation.readify.features.articles.data.repository
 
 import com.innovation.readify.features.articles.data.local.entities.ArticlesEntity
 import com.innovation.readify.features.articles.data.remote.model.ArticleModel
-import com.innovation.readify.features.articles.data.remote.model.ArticlesResponseModel
 import com.innovation.readify.features.articles.domain.model.Article
-import com.innovation.readify.features.articles.domain.model.Articles
-
-fun ArticlesResponseModel.toDomain() = Articles(
-  articles = this.articles?.map { Article(it.title, it.urlToImage, it.description) }.orEmpty()
-)
 
 fun ArticlesEntity.toDomain() = Article(
   title = title,
+  id = id,
   imageUrl = urlToImage,
   description = description
 )

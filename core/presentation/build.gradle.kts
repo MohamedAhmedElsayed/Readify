@@ -46,7 +46,8 @@ dependencies {
   implementation(libs.androidx.compose.material3)
   implementation(libs.androidx.activity.compose)
   implementation(libs.androidx.lifecycle.runtime.ktx)
-  
+  implementation(libs.kotlinx.serialization.json)
+
   // Lifecycle ViewModel - required for viewModelScope
   implementation(libs.androidx.lifecycle.viewmodel.ktx)
   
@@ -64,6 +65,7 @@ dependencies {
 
   // Hilt
   implementation(libs.hilt.android)
+  implementation(libs.androidx.navigation.runtime.ktx)
   ksp(libs.hilt.compiler)
 
   // Test dependencies

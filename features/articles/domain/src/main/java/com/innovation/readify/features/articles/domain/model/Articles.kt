@@ -6,6 +6,7 @@ data class Articles(
 )
 
 data class Article(
+  val id: String?,
   val title: String?,
   val imageUrl: String?,
   val description: String?

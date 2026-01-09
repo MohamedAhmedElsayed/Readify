@@ -7,24 +7,23 @@ import com.innovation.readify.features.articles.domain.repository.ArticlesReposi
 import javax.inject.Inject
 
 class ArticlesRepositoryImp @Inject constructor(
-  private val service: ArticlesService,
-  private val articlesDao: ArticlesDao
+  private val service: ArticlesService, private val articlesDao: ArticlesDao
 ) : ArticlesRepository {
   override suspend fun getTopHeadlines(
-    page: Int,
-    pageSize: Int
-  ) = service.getTopHeadlines(page = page, pageSize = pageSize)
-    .fold(onSuccess = {
-      val articlesEntities = it.articles?.map { it.toEntity(page) }.orEmpty()
-      articlesDao.insertOrUpdateArticles(articlesEntities)
-      Result.success(it.toDomain())
-    }, onFailure = {
-      val cachedArticles = articlesDao.getArticlesForPage(page).map { it.toDomain() }
-      if (cachedArticles.isNotEmpty()) {
-        Result.success(Articles(cachedArticles))
-      } else {
-        Result.failure(it)
-      }
-    })
+    page: Int, pageSize: Int
+  ) = service.getTopHeadlines(page = page, pageSize = pageSize).fold(onSuccess = {
+    val articlesEntities = it.articles?.map { it.toEntity(page) }.orEmpty()
+    articlesDao.insertOrUpdateArticles(articlesEntities)
+    val domainArticles = articlesEntities.map { it.toDomain() }
+    Result.success(Articles(domainArticles))
+  }, onFailure = {
+    val cachedArticles = articlesDao.getArticlesForPage(page).map { it.toDomain() }
+    if (cachedArticles.isNotEmpty()) {
+      Result.success(Articles(cachedArticles))
+    } else {
+      Result.failure(it)
+    }
+  })
 
+  override suspend fun getArticleById(id: String) = articlesDao.findArticleById(id).toDomain()
 }

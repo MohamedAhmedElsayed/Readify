@@ -36,7 +36,7 @@ fun ArticleItem(article: ArticleUiModel, onArticleClick: (String) -> Unit) {
       .fillMaxWidth()
       .height(200.dp)
       .clickable {
-//        onArticleClick(article.id)
+        onArticleClick(article.id)
       },
     shape = RoundedCornerShape(spacing.s),
     elevation = CardDefaults.cardElevation(spacing.xxs)
@@ -85,6 +85,7 @@ fun ArticleItemPreview() {
   ReadifyTheme {
     ArticleItem(
       article = ArticleUiModel(
+        id = "1",
         title = "Sample Article Title That Might Be Long and Wrap to Multiple Lines",
         imageUrl = "https://picsum.photos/400/200",
         description = "This is a sample article description for preview purposes."
@@ -100,6 +101,7 @@ fun ArticleItemShortTitlePreview() {
   ReadifyTheme {
     ArticleItem(
       article = ArticleUiModel(
+        id = "1",
         title = "Short Title",
         imageUrl = "https://picsum.photos/400/200",
         description = "A shorter title example."
@@ -115,6 +117,7 @@ fun ArticleItemNoImagePreview() {
   ReadifyTheme {
     ArticleItem(
       article = ArticleUiModel(
+        id = "1",
         title = "Article Without Image",
         imageUrl = "",
         description = "This article has no image URL."

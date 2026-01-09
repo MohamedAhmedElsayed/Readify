@@ -112,26 +112,31 @@ fun ArticlesListContentPreview() {
       state = ArticlesListState(
         articles = listOf(
           ArticleUiModel(
+            id = "1",
             title = "Breaking News: Technology Advances in 2024",
             description = "Latest developments in technology and innovation",
             imageUrl = "https://picsum.photos/400/200?random=1"
           ),
           ArticleUiModel(
+            id = "1",
             title = "Climate Change Summit Reaches Historic Agreement",
             description = "World leaders agree on new climate targets",
             imageUrl = "https://picsum.photos/400/200?random=2"
           ),
           ArticleUiModel(
+            id = "1",
             title = "Space Exploration: New Mission to Mars",
             description = "NASA announces ambitious new mission",
             imageUrl = "https://picsum.photos/400/200?random=3"
           ),
           ArticleUiModel(
+            id = "1",
             title = "Healthcare Breakthrough: New Treatment Discovered",
             description = "Scientists develop revolutionary medical treatment",
             imageUrl = "https://picsum.photos/400/200?random=4"
           ),
           ArticleUiModel(
+            id = "1",
             title = "Sports: Championship Finals This Weekend",
             description = "Exciting matchups in the championship finals",
             imageUrl = "https://picsum.photos/400/200?random=5"
@@ -158,6 +163,7 @@ fun ArticlesListContentLoadingPreview() {
       state = ArticlesListState(
         articles = listOf(
           ArticleUiModel(
+            id = "1",
             title = "Sample Article Title",
             description = "Sample description",
             imageUrl = "https://picsum.photos/400/200?random=1"
@@ -184,6 +190,7 @@ fun ArticlesListContentErrorWithArticlesPreview() {
       state = ArticlesListState(
         articles = listOf(
           ArticleUiModel(
+            id = "1",
             title = "Sample Article Title",
             description = "Sample description",
             imageUrl = "https://picsum.photos/400/200?random=1"
@@ -210,6 +217,7 @@ fun ArticlesListContentEndReachedPreview() {
       state = ArticlesListState(
         articles = listOf(
           ArticleUiModel(
+            id = "1",
             title = "Sample Article Title",
             description = "Sample description",
             imageUrl = "https://picsum.photos/400/200?random=1"

@@ -1,7 +1,7 @@
 package com.innovation.readify.features.articles.data.remote.remotedatasource
 
 import com.innovation.core.data.BuildConfig
-import com.innovation.readify.features.articles.data.model.ArticlesModel
+import com.innovation.readify.features.articles.data.remote.model.ArticlesResponseModel
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -15,5 +15,5 @@ interface ArticlesService {
     @Query("apiKey") apiKey: String = BuildConfig.API_KEY,
     @Query("page") page: Int,
     @Query("pageSize") pageSize: Int,
-  ): Result<ArticlesModel>
+  ): Result<ArticlesResponseModel>
 }

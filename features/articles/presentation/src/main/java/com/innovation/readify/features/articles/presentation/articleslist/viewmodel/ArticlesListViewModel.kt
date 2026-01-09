@@ -2,6 +2,7 @@ package com.innovation.readify.features.articles.presentation.articleslist.viewm
 
 import androidx.lifecycle.viewModelScope
 import com.innovation.readify.features.articles.domain.usecase.GetArticlesUseCase
+import com.innovation.readify.features.articles.presentation.articleslist.constants.pageSize
 import com.innovation.readify.features.articles.presentation.articleslist.model.ArticlesListEffect
 import com.innovation.readify.features.articles.presentation.articleslist.model.ArticlesListEvent
 import com.innovation.readify.features.articles.presentation.articleslist.model.ArticlesListState
@@ -17,21 +18,46 @@ class ArticlesListViewModel @Inject constructor(private val articlesUseCase: Get
     initialState = ArticlesListState()
   ) {
 
+  private var currentPage = 1
+
   init {
-    viewModelScope.launch {
-      articlesUseCase(
-        1,
-        10
-      ).onSuccess { updateState { copy(articles = it.articles.toArticlesUiModelList()) } }
-        .onFailure { }
-    }
+    loadArticles()
   }
 
   override fun handleEvent(event: ArticlesListEvent) {
     when (event) {
-      ArticlesListEvent.LoadMore -> {}
-      ArticlesListEvent.Refresh -> {}
-      ArticlesListEvent.Retry -> {}
+      ArticlesListEvent.LoadMore -> loadArticles()
+      ArticlesListEvent.Refresh -> refresh()
+      ArticlesListEvent.Retry -> loadArticles()
     }
+  }
+
+  private fun loadArticles() {
+    if (state.isLoading || state.isEndReached) return
+
+    updateState { copy(isLoading = true, error = null) }
+
+    viewModelScope.launch {
+      articlesUseCase(page = currentPage, pageSize = pageSize)
+        .onSuccess {
+          currentPage++
+          updateState {
+            copy(
+              articles = articles + it.articles.toArticlesUiModelList(),
+              isLoading = false,
+              isEndReached = it.articles.size < pageSize,
+            )
+          }
+        }
+        .onFailure {
+          updateState { copy(isLoading = false, error = it.message) }
+
+        }
+    }
+  }
+
+  private fun refresh() {
+    currentPage = 1
+    updateState { ArticlesListState() }
   }
 }

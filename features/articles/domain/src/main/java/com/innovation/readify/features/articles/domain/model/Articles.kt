@@ -2,7 +2,7 @@ package com.innovation.readify.features.articles.domain.model
 
 
 data class Articles(
-  val articles: List<Article>?
+  val articles: List<Article>
 )
 
 data class Article(

@@ -91,7 +91,9 @@ fun ArticlesListContent(
           state.isLoading && state.articles.isNotEmpty() -> LoadingItem()
           state.error != null && state.articles.isNotEmpty() -> RetryLoading(onRetry)
           state.isEndReached -> EndReachedMessage()
-          state.articles.isEmpty() && state.error == null -> EmptyScreenWithRetry(onRetry)
+          state.isLoading.not() && state.articles.isEmpty() && state.error == null -> EmptyScreenWithRetry(
+            onRetry
+          )
         }
       }
     }

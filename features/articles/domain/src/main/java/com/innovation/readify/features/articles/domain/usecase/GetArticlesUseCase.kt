@@ -8,7 +8,7 @@ class GetArticlesUseCase @Inject constructor(
 ) {
   suspend operator fun invoke(
     page: Int,
-    perPage: Int,
-  ) = articlesRepository.getTopHeadlines(page, perPage)
+    pageSize: Int,
+  ) = articlesRepository.getTopHeadlines(page, pageSize)
 
 }

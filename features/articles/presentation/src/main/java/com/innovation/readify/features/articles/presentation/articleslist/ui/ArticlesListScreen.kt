@@ -18,16 +18,14 @@ fun ArticlesListScreen(
 ) {
   val state by viewModel.uiState.collectAsStateWithLifecycle()
 
-
-
   ArticlesListContent(
     modifier = modifier,
     state = state,
     onLoadMore = {
       viewModel.sendEvent(ArticlesListEvent.LoadMore)
     },
-    onRetry = { viewModel.sendEvent(ArticlesListEvent.LoadMore) },
-    onRefresh = { viewModel.sendEvent(ArticlesListEvent.Retry) },
+    onRetry = { viewModel.sendEvent(ArticlesListEvent.Retry) },
+    onRefresh = { viewModel.sendEvent(ArticlesListEvent.Refresh) },
     onArticleClicked = onArticleClicked,
   )
 }

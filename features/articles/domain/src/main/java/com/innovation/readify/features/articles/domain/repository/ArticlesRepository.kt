@@ -6,5 +6,5 @@ interface ArticlesRepository {
   suspend fun getTopHeadlines(
     page: Int,
     pageSize: Int,
-  ): Result<Articles>
+  ):  Result<Articles>
 }

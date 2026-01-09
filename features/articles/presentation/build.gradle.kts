@@ -53,6 +53,12 @@ dependencies {
   // Hilt
   implementation(libs.hilt.android)
   ksp(libs.hilt.compiler)
+  
+  // Hilt Navigation Compose - provides hiltViewModel() function
+  implementation(libs.androidx.hilt.navigation.compose)
+  
+  // Lifecycle ViewModel - required for ViewModel and viewModelScope
+  implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
   // Test dependencies
   testImplementation(libs.junit)

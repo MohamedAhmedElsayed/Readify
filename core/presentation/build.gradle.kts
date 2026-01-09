@@ -53,6 +53,10 @@ dependencies {
   // Coroutines
   implementation(libs.kotlinx.coroutines.core)
   implementation(libs.kotlinx.coroutines.android)
+  
+  // Paging3
+  implementation(libs.androidx.paging.runtime)
+  implementation(libs.androidx.paging.compose)
 
   // Project dependencies
   api(projects.designsystem)

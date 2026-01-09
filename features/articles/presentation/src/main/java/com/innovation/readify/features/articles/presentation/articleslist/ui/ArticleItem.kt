@@ -1,4 +1,4 @@
-package com.innovation.readify.features.articles.presentation.ui
+package com.innovation.readify.features.articles.presentation.articleslist.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -26,10 +26,10 @@ import com.innovation.readify.designsystem.componentts.ImageLoadingError
 import com.innovation.readify.designsystem.componentts.LoadingItem
 import com.innovation.readify.designsystem.theme.LocalSpacing
 import com.innovation.readify.designsystem.theme.ReadifyTheme
-import com.innovation.readify.features.articles.domain.model.Article
+import com.innovation.readify.features.articles.presentation.articleslist.model.ArticleUiModel
 
 @Composable
-fun ArticleItem(article: Article, onArticleClick: (String) -> Unit) {
+fun ArticleItem(article: ArticleUiModel, onArticleClick: (String) -> Unit) {
   val spacing = LocalSpacing.current
   Card(
     modifier = Modifier
@@ -43,7 +43,7 @@ fun ArticleItem(article: Article, onArticleClick: (String) -> Unit) {
   ) {
     Box {
       SubcomposeAsyncImage(
-        model = article.imageUrl ?: "",
+        model = article.imageUrl,
         contentDescription = article.title,
         modifier = Modifier
           .fillMaxSize(),
@@ -64,17 +64,17 @@ fun ArticleItem(article: Article, onArticleClick: (String) -> Unit) {
             )
           )
       )
-      article.title?.let { title ->
-        Text(
-          text = title,
-          style = MaterialTheme.typography.titleMedium.copy(color = Color.White),
-          modifier = Modifier
-            .align(Alignment.BottomStart)
-            .padding(spacing.m),
-          maxLines = 2,
-          overflow = TextOverflow.Ellipsis
-        )
-      }
+
+      Text(
+        text = article.title,
+        style = MaterialTheme.typography.titleMedium.copy(color = Color.White),
+        modifier = Modifier
+          .align(Alignment.BottomStart)
+          .padding(spacing.m),
+        maxLines = 2,
+        overflow = TextOverflow.Ellipsis
+      )
+
     }
   }
 }
@@ -84,7 +84,7 @@ fun ArticleItem(article: Article, onArticleClick: (String) -> Unit) {
 fun ArticleItemPreview() {
   ReadifyTheme {
     ArticleItem(
-      article = Article(
+      article = ArticleUiModel(
         title = "Sample Article Title That Might Be Long and Wrap to Multiple Lines",
         imageUrl = "https://picsum.photos/400/200",
         description = "This is a sample article description for preview purposes."
@@ -99,7 +99,7 @@ fun ArticleItemPreview() {
 fun ArticleItemShortTitlePreview() {
   ReadifyTheme {
     ArticleItem(
-      article = Article(
+      article = ArticleUiModel(
         title = "Short Title",
         imageUrl = "https://picsum.photos/400/200",
         description = "A shorter title example."
@@ -114,9 +114,9 @@ fun ArticleItemShortTitlePreview() {
 fun ArticleItemNoImagePreview() {
   ReadifyTheme {
     ArticleItem(
-      article = Article(
+      article = ArticleUiModel(
         title = "Article Without Image",
-        imageUrl = null,
+        imageUrl = "",
         description = "This article has no image URL."
       ),
       onArticleClick = {}

@@ -31,14 +31,9 @@ android {
 }
 
 dependencies {
-
   api(libs.androidx.core.ktx)
   api(libs.androidx.appcompat)
   api(libs.material)
-  testImplementation(libs.junit)
-  androidTestImplementation(libs.androidx.junit)
-  androidTestImplementation(libs.androidx.espresso.core)
-
   api(libs.androidx.core.ktx)
   api(libs.androidx.lifecycle.runtime.ktx)
   api(libs.androidx.activity.compose)
@@ -47,6 +42,7 @@ dependencies {
   api(libs.androidx.compose.ui.graphics)
   api(libs.androidx.compose.ui.tooling.preview)
   api(libs.androidx.compose.material3)
+
   testImplementation(libs.junit)
   androidTestImplementation(libs.androidx.junit)
   androidTestImplementation(libs.androidx.espresso.core)
@@ -54,7 +50,8 @@ dependencies {
   androidTestImplementation(libs.androidx.compose.ui.test.junit4)
   debugImplementation(libs.androidx.compose.ui.tooling)
   debugImplementation(libs.androidx.compose.ui.test.manifest)
-
-  // Coil2 - exposed as API so dependent modules can use it
+  testImplementation(libs.junit)
+  androidTestImplementation(libs.androidx.junit)
+  androidTestImplementation(libs.androidx.espresso.core)
   api(libs.coil.compose)
 }

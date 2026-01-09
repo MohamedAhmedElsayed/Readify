@@ -1,4 +1,4 @@
-package com.innovation.readify.features.articles.data.remote.di
+package com.innovation.readify.features.articles.data.di
 
 import com.innovation.readify.features.articles.data.remote.remotedatasource.ArticlesService
 import dagger.Module
@@ -12,7 +12,7 @@ import retrofit2.Retrofit
 object ServiceModule {
 
   @Provides
-  fun providePostsService(retrofit: Retrofit): ArticlesService {
+  fun provideArticlesService(retrofit: Retrofit): ArticlesService {
     return retrofit.create(ArticlesService::class.java)
   }
 }

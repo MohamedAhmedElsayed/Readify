@@ -25,7 +25,6 @@ internal class ResultCall<T : Any>(
       }
 
       override fun onFailure(call: Call<T>, t: Throwable) {
-
         callback.onResponse(
           this@ResultCall,
           Response.success(Result.failure(t))

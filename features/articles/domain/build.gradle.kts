@@ -14,7 +14,6 @@ kotlin {
 }
 
 dependencies {
-  // Hilt Core (for JVM modules)
   implementation(libs.hilt.core)
   ksp(libs.hilt.compiler)
 }

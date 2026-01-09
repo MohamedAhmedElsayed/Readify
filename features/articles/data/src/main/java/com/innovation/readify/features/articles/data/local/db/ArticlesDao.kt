@@ -13,8 +13,8 @@ interface ArticlesDao {
   suspend fun findArticleById(id: String): ArticlesEntity
 
   @Insert(onConflict = OnConflictStrategy.REPLACE)
-  suspend fun insertOrUpdateArticles(posts: List<ArticlesEntity>)
+  suspend fun insertOrUpdateArticles(articles: List<ArticlesEntity>)
 
-  @Query("SELECT * FROM articles WhERE page = :page")
+  @Query("SELECT * FROM articles WHERE page = :page")
   suspend fun getArticlesForPage(page: Int): List<ArticlesEntity>
 }

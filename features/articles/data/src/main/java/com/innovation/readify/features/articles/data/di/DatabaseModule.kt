@@ -1,9 +1,7 @@
-package com.innovation.readify.features.articles.data.local.di
-
+package com.innovation.readify.features.articles.data.di
 
 import android.app.Application
 import androidx.room.Room
-import com.innovation.readify.features.articles.data.local.db.ArticlesDao
 import com.innovation.readify.features.articles.data.local.db.ArticlesDataBase
 import dagger.Module
 import dagger.Provides
@@ -24,9 +22,7 @@ object DatabaseModule {
   ).fallbackToDestructiveMigration()
     .build()
 
-
   @Provides
-  fun provideArticlesDao(db: ArticlesDataBase): ArticlesDao {
-    return db.articlesDeo()
-  }
+  fun provideArticlesDao(db: ArticlesDataBase) = db.articlesDeo()
+
 }

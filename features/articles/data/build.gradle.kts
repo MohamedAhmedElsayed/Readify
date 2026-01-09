@@ -40,10 +40,8 @@ dependencies {
   implementation(libs.hilt.android)
   ksp(libs.hilt.compiler)
 
-  // Kotlin Serialization
   implementation(libs.kotlinx.serialization.json)
 
-  // Room Database
   implementation(libs.androidx.room.runtime)
   implementation(libs.androidx.room.ktx)
   ksp(libs.androidx.room.compiler)

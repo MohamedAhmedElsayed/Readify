@@ -1,4 +1,4 @@
-package com.innovation.readify.features.articles.data.remote.di
+package com.innovation.readify.features.articles.data.di
 
 import com.innovation.readify.features.articles.data.repository.ArticlesRepositoryImp
 import com.innovation.readify.features.articles.domain.repository.ArticlesRepository

@@ -15,11 +15,10 @@ import com.innovation.readify.features.articles.presentation.articleslist.viewmo
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ArticlesListScreen(
-  onArticleClicked: (String) -> Unit,
-  viewModel: ArticlesListViewModel = hiltViewModel(),
-) {
+fun ArticlesListScreen(onArticleClicked: (String) -> Unit) {
+  val viewModel: ArticlesListViewModel = hiltViewModel()
   val state by viewModel.uiState.collectAsStateWithLifecycle()
+
   Scaffold(
     topBar = {
       TopAppBar(

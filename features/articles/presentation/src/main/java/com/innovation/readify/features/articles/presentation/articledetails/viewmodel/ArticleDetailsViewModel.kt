@@ -11,6 +11,7 @@ import com.innovation.readify.features.articles.presentation.navigation.Articles
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -27,7 +28,7 @@ class ArticleDetailsViewModel @Inject constructor(
     val id = savedStateHandle.toRoute<ArticlesRoute.ArticleDetails>().articleId
     viewModelScope.launch {
       val article = getArticleByIdUseCase(id)
-      _uiState.value = ArticleDetailsState(articleUiModel = article?.toUiModel())
+      _uiState.update { ArticleDetailsState(articleUiModel = article?.toUiModel()) }
     }
   }
 

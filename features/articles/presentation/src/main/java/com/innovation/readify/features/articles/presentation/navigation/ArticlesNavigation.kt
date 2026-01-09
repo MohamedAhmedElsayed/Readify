@@ -9,12 +9,11 @@ import com.innovation.readify.presentation.navigation.LocalNavController
 fun NavGraphBuilder.articlesNavGraph() {
   composable<ArticlesRoute.ArticlesList> {
     val navController = LocalNavController.current
-    ArticlesListScreen(onArticleClicked = { navController.navigate(ArticlesRoute.ArticleDetails(it)) })
+    ArticlesListScreen { navController.navigate(ArticlesRoute.ArticleDetails(it)) }
 
   }
   composable<ArticlesRoute.ArticleDetails> {
     val navController = LocalNavController.current
-
     ArticleDetailsScreen(onBackClick = { navController.popBackStack() })
 
   }

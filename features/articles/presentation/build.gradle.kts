@@ -37,8 +37,6 @@ android {
 }
 
 dependencies {
-
-  // Compose dependencies
   implementation(platform(libs.androidx.compose.bom))
   implementation(libs.androidx.compose.ui)
   implementation(libs.androidx.compose.ui.graphics)
@@ -47,22 +45,17 @@ dependencies {
   implementation(libs.androidx.activity.compose)
   implementation(libs.androidx.lifecycle.runtime.ktx)
 
-  // Project dependencies
   implementation(projects.core.presentation)
   implementation(projects.features.articles.domain)
 
-  // Hilt
   implementation(libs.hilt.android)
   ksp(libs.hilt.compiler)
-  
-  // Hilt Navigation Compose - provides hiltViewModel() function
+
   implementation(libs.androidx.hilt.navigation.compose)
-  
-  // Lifecycle ViewModel - required for ViewModel and viewModelScope
+
   implementation(libs.androidx.lifecycle.viewmodel.ktx)
   implementation(libs.androidx.navigation.compose)
 
-  // Test dependencies
   testImplementation(libs.junit)
   androidTestImplementation(libs.androidx.junit)
   androidTestImplementation(libs.androidx.espresso.core)

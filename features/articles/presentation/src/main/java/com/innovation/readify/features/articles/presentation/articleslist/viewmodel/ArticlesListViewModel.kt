@@ -18,7 +18,6 @@ class ArticlesListViewModel @Inject constructor(private val articlesUseCase: Get
     initialState = ArticlesListState()
   ) {
 
-  private var currentPage = 1
 
   init {
     loadArticles()
@@ -38,14 +37,14 @@ class ArticlesListViewModel @Inject constructor(private val articlesUseCase: Get
     updateState { copy(isLoading = true, error = null) }
 
     viewModelScope.launch {
-      articlesUseCase(page = currentPage, pageSize = pageSize)
+      articlesUseCase(page = state.currentPage, pageSize = pageSize)
         .onSuccess {
-          currentPage++
           updateState {
             copy(
-              articles = articles + it.articles.toArticlesUiModelList(),
+              articles = articles + it.toArticlesUiModelList(),
               isLoading = false,
-              isEndReached = it.articles.size < pageSize,
+              isEndReached = it.size < pageSize,
+              currentPage = currentPage + 1
             )
           }
         }
@@ -57,7 +56,6 @@ class ArticlesListViewModel @Inject constructor(private val articlesUseCase: Get
   }
 
   private fun refresh() {
-    currentPage = 1
     updateState { ArticlesListState() }
   }
 }

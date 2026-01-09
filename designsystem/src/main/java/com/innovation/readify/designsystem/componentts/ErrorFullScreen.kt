@@ -11,8 +11,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import com.innovation.readify.designsystem.R
 import com.innovation.readify.designsystem.theme.LocalSpacing
 import com.innovation.readify.designsystem.theme.ReadifyTheme
 
@@ -33,7 +35,7 @@ fun ErrorFullScreen(
       modifier = Modifier.fillMaxSize()
     ) {
       Text(
-        text = "Something went wrong",
+        text = stringResource(R.string.error_generic_message),
         style = MaterialTheme.typography.headlineMedium,
         textAlign = TextAlign.Center,
         modifier = Modifier.padding(bottom = spacing.l)
@@ -42,7 +44,7 @@ fun ErrorFullScreen(
       Button(
         onClick = onRetry
       ) {
-        Text(text = "Retry")
+        Text(text = stringResource(R.string.retry))
       }
     }
   }

@@ -54,14 +54,11 @@ dependencies {
   implementation(libs.hilt.android)
   ksp(libs.hilt.compiler)
 
-// Kotlin Serialization
   api(libs.kotlinx.serialization.json)
 
-// Retrofit
   api(libs.retrofit)
   implementation(libs.retrofit.kotlinx.serialization)
 
-// OkHttp
   implementation(libs.okhttp)
   implementation(libs.okhttp.logging.interceptor)
 

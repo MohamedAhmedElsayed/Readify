@@ -9,7 +9,7 @@ import com.innovation.readify.features.articles.presentation.navigation.articles
 import com.innovation.readify.presentation.navigation.LocalNavController
 
 @Composable
-fun ArticlesNavGraph() {
+fun ArticlesNavHost() {
   val navController = rememberNavController()
   CompositionLocalProvider(LocalNavController provides navController) {
     NavHost(

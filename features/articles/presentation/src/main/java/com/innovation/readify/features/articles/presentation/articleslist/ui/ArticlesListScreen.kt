@@ -26,6 +26,7 @@ fun ArticlesListScreen(onArticleClicked: (String) -> Unit) {
       )
     },
   ) { paddingValues ->
+
     ArticlesListContent(
       modifier = Modifier.padding(paddingValues),
       state = state,
@@ -36,6 +37,7 @@ fun ArticlesListScreen(onArticleClicked: (String) -> Unit) {
       onRefresh = { viewModel.sendEvent(ArticlesListEvent.Refresh) },
       onArticleClicked = onArticleClicked,
     )
+
   }
 }
 

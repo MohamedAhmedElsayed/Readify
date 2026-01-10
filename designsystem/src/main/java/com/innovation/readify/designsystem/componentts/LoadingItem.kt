@@ -17,11 +17,11 @@ fun LoadingItem() {
   Box(
     modifier = Modifier
       .fillMaxSize()
-      .clip(RoundedCornerShape(spacing.xs)),
+      .clip(RoundedCornerShape(spacing.xxxl)),
     contentAlignment = Alignment.Center
   ) {
     CircularProgressIndicator(
-      modifier = Modifier.size(spacing.xl)
+      modifier = Modifier.size(spacing.xxxl)
     )
   }
 }

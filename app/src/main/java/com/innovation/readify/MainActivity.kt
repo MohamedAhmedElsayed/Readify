@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.ExperimentalMaterial3Api
 import com.innovation.readify.designsystem.theme.ReadifyTheme
-import com.innovation.readify.navigation.ArticlesNavGraph
+import com.innovation.readify.navigation.ArticlesNavHost
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
     enableEdgeToEdge()
     setContent {
       ReadifyTheme {
-        ArticlesNavGraph()
+        ArticlesNavHost()
       }
     }
   }

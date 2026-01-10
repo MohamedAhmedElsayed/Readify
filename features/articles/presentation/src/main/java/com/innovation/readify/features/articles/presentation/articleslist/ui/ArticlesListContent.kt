@@ -88,12 +88,11 @@ fun ArticlesListContent(
       }
       item {
         when {
-          state.isLoading && state.articles.isNotEmpty() -> LoadingItem()
+          state.isLoading -> LoadingItem()
           state.error != null && state.articles.isNotEmpty() -> RetryLoading(onRetry)
           state.isEndReached -> EndReachedMessage()
-          state.isLoading.not() && state.articles.isEmpty() && state.error == null -> EmptyScreenWithRetry(
-            onRetry
-          )
+          state.articles.isEmpty() && state.error == null -> EmptyScreenWithRetry(onRetry)
+
         }
       }
     }

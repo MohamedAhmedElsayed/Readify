@@ -59,6 +59,7 @@ dependencies {
   testImplementation(libs.junit)
   testImplementation(libs.kotlinx.coroutines.test)
   testImplementation(libs.mockk)
+  testImplementation(libs.turbine)
   testImplementation("androidx.lifecycle:lifecycle-viewmodel-testing:2.8.6")
   testImplementation(libs.androidx.navigation.compose)
   androidTestImplementation(libs.androidx.junit)

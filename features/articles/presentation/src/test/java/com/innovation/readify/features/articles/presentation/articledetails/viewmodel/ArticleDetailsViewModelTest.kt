@@ -13,8 +13,8 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkStatic
 import io.mockk.unmockkStatic
+import app.cash.turbine.test
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.junit.After
@@ -70,15 +70,23 @@ class ArticleDetailsViewModelTest {
 
     // When
     viewModel = ArticleDetailsViewModel(savedStateHandle, getArticleByIdUseCase)
-    advanceUntilIdle()
 
     // Then
-    val state = viewModel.uiState.first()
-    assertNotNull(state.articleUiModel)
-    assertEquals(articleId, state.articleUiModel?.id)
-    assertEquals("Test Article", state.articleUiModel?.title)
-    assertEquals("Test Description", state.articleUiModel?.description)
-    assertEquals("https://example.com/image.jpg", state.articleUiModel?.imageUrl)
+    viewModel.uiState.test {
+      // Initial state
+      val initialState = awaitItem()
+      assertEquals(ArticleDetailsState(), initialState)
+
+      // Success state with article
+      val state = awaitItem()
+      assertNotNull(state.articleUiModel)
+      assertEquals(articleId, state.articleUiModel?.id)
+      assertEquals("Test Article", state.articleUiModel?.title)
+      assertEquals("Test Description", state.articleUiModel?.description)
+      assertEquals("https://example.com/image.jpg", state.articleUiModel?.imageUrl)
+
+      cancelAndIgnoreRemainingEvents()
+    }
 
     coVerify(exactly = 1) { getArticleByIdUseCase(articleId) }
   }
@@ -93,11 +101,19 @@ class ArticleDetailsViewModelTest {
 
     // When
     viewModel = ArticleDetailsViewModel(savedStateHandle, getArticleByIdUseCase)
-    advanceUntilIdle()
 
     // Then
-    val state = viewModel.uiState.first()
-    assertNull(state.articleUiModel)
+    viewModel.uiState.test {
+      // Initial state
+      val initialState = awaitItem()
+      assertEquals(ArticleDetailsState(), initialState)
+
+      // Final state with null article
+      val state = awaitItem()
+      assertNull(state.articleUiModel)
+
+      cancelAndIgnoreRemainingEvents()
+    }
 
     coVerify(exactly = 1) { getArticleByIdUseCase(articleId) }
   }
@@ -118,15 +134,22 @@ class ArticleDetailsViewModelTest {
 
     // When
     viewModel = ArticleDetailsViewModel(savedStateHandle, getArticleByIdUseCase)
-    advanceUntilIdle()
 
     // Then
-    val state = viewModel.uiState.first()
-    assertNotNull(state.articleUiModel)
-    assertEquals(articleId, state.articleUiModel?.id)
-    assertEquals("", state.articleUiModel?.title)
-    assertEquals("", state.articleUiModel?.description)
-    assertEquals("", state.articleUiModel?.imageUrl)
+    viewModel.uiState.test {
+      // Initial state
+      assertEquals(ArticleDetailsState(), awaitItem())
+
+      // Success state with mapped null fields
+      val state = awaitItem()
+      assertNotNull(state.articleUiModel)
+      assertEquals(articleId, state.articleUiModel?.id)
+      assertEquals("", state.articleUiModel?.title)
+      assertEquals("", state.articleUiModel?.description)
+      assertEquals("", state.articleUiModel?.imageUrl)
+
+      cancelAndIgnoreRemainingEvents()
+    }
   }
 
   @Test
@@ -145,15 +168,22 @@ class ArticleDetailsViewModelTest {
 
     // When
     viewModel = ArticleDetailsViewModel(savedStateHandle, getArticleByIdUseCase)
-    advanceUntilIdle()
 
     // Then
-    val state = viewModel.uiState.first()
-    assertNotNull(state.articleUiModel)
-    assertEquals(articleId, state.articleUiModel?.id)
-    assertEquals("Test Article", state.articleUiModel?.title)
-    assertEquals("", state.articleUiModel?.description)
-    assertEquals("https://example.com/image.jpg", state.articleUiModel?.imageUrl)
+    viewModel.uiState.test {
+      // Initial state
+      assertEquals(ArticleDetailsState(), awaitItem())
+
+      // Success state with partial null fields mapped
+      val state = awaitItem()
+      assertNotNull(state.articleUiModel)
+      assertEquals(articleId, state.articleUiModel?.id)
+      assertEquals("Test Article", state.articleUiModel?.title)
+      assertEquals("", state.articleUiModel?.description)
+      assertEquals("https://example.com/image.jpg", state.articleUiModel?.imageUrl)
+
+      cancelAndIgnoreRemainingEvents()
+    }
   }
 
   @Test
@@ -194,15 +224,19 @@ class ArticleDetailsViewModelTest {
 
     // When
     viewModel = ArticleDetailsViewModel(savedStateHandle, getArticleByIdUseCase)
-    // Before advanceUntilIdle, state should be initial
-    val initialState = viewModel.uiState.first()
-    assertEquals(ArticleDetailsState(), initialState)
-
-    advanceUntilIdle()
 
     // Then
-    val finalState = viewModel.uiState.first()
-    assertNotNull(finalState.articleUiModel)
+    viewModel.uiState.test {
+      // Initial state (before loading)
+      val initialState = awaitItem()
+      assertEquals(ArticleDetailsState(), initialState)
+
+      // Final state after loading
+      val finalState = awaitItem()
+      assertNotNull(finalState.articleUiModel)
+
+      cancelAndIgnoreRemainingEvents()
+    }
   }
 
 

@@ -18,7 +18,6 @@ class ArticlesListViewModel @Inject constructor(private val articlesUseCase: Get
     initialState = ArticlesListState()
   ) {
 
-
   init {
     loadArticles()
   }

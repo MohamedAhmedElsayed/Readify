@@ -114,7 +114,7 @@ Readify/
 
 ## Running the App
 
-To run the app, you should add the following to your `gradle.properties` file:
+To run the app, you should add the following to your `local.properties` file:
 
 ```properties
 API_KEY=your_actual_api_key_here

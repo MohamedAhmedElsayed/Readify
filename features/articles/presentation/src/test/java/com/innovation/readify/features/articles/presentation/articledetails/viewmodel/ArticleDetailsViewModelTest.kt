@@ -2,6 +2,7 @@ package com.innovation.readify.features.articles.presentation.articledetails.vie
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.toRoute
+import app.cash.turbine.test
 import com.innovation.readify.features.articles.domain.model.Article
 import com.innovation.readify.features.articles.domain.usecase.GetArticleByIdUseCase
 import com.innovation.readify.features.articles.presentation.MainDispatcherRule
@@ -13,7 +14,6 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkStatic
 import io.mockk.unmockkStatic
-import app.cash.turbine.test
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest

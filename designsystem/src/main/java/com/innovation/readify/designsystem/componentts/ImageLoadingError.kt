@@ -11,21 +11,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
- import com.innovation.readify.designsystem.theme.LocalSpacing
+import com.innovation.readify.designsystem.theme.LocalSpacing
 
 @Composable
 fun ImageLoadingError() {
-    val spacing = LocalSpacing.current
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .clip(RoundedCornerShape(spacing.xs)),
-        contentAlignment = Alignment.Center
-    ) {
-        Icon(
-            imageVector = Icons.Default.Warning,
-            contentDescription = "error loading image",
-            modifier = Modifier.size(spacing.xxxl),
-        )
-    }
+  val spacing = LocalSpacing.current
+  Box(
+    modifier = Modifier
+        .fillMaxSize()
+        .clip(RoundedCornerShape(spacing.xs)),
+    contentAlignment = Alignment.Center
+  ) {
+    Icon(
+      imageVector = Icons.Default.Warning,
+      contentDescription = "error loading image",
+      modifier = Modifier.size(spacing.xxxl),
+    )
+  }
 }

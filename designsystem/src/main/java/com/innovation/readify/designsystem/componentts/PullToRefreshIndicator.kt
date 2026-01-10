@@ -13,13 +13,13 @@ import androidx.compose.material3.pulltorefresh.PullToRefreshDefaults
 import androidx.compose.material3.pulltorefresh.PullToRefreshDefaults.PositionalThreshold
 import androidx.compose.material3.pulltorefresh.PullToRefreshState
 import androidx.compose.material3.pulltorefresh.pullToRefreshIndicator
+import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import com.innovation.readify.designsystem.componentts.PullToRefreshIndicatorConstants.CROSSFADE_DURATION_MILLIS
 import com.innovation.readify.designsystem.componentts.PullToRefreshIndicatorConstants.SPINNER_SIZE
 import com.innovation.readify.designsystem.theme.LocalSpacing

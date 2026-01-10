@@ -46,21 +46,17 @@ android {
 }
 
 dependencies {
-
-  implementation(libs.androidx.core.ktx)
-  implementation(libs.androidx.appcompat)
-  implementation(libs.material)
-
+  api(libs.androidx.core.ktx)
   implementation(libs.hilt.android)
   ksp(libs.hilt.compiler)
 
   api(libs.kotlinx.serialization.json)
 
   api(libs.retrofit)
-  implementation(libs.retrofit.kotlinx.serialization)
+  api(libs.retrofit.kotlinx.serialization)
 
-  implementation(libs.okhttp)
-  implementation(libs.okhttp.logging.interceptor)
+  api(libs.okhttp)
+  api(libs.okhttp.logging.interceptor)
 
   testImplementation(libs.junit)
   androidTestImplementation(libs.androidx.junit)

@@ -37,10 +37,11 @@ android {
 
 dependencies {
 
+  implementation(projects.core.data)
+  implementation(projects.features.articles.domain)
+
   implementation(libs.hilt.android)
   ksp(libs.hilt.compiler)
-
-  implementation(libs.kotlinx.serialization.json)
 
   implementation(libs.androidx.room.runtime)
   implementation(libs.androidx.room.ktx)
@@ -54,6 +55,4 @@ dependencies {
   androidTestImplementation(libs.androidx.junit)
   androidTestImplementation(libs.androidx.espresso.core)
 
-  implementation(projects.core.data)
-  implementation(projects.features.articles.domain)
 }

@@ -11,6 +11,7 @@ activityCompose = "1.12.2"
 composeBom = "2024.12.01"
 coroutines = "1.7.3"
 appcompat = "1.7.1"
+lifecycleViewmodelTesting = "2.8.6"
 material = "1.13.0"
 jetbrainsKotlinJvm = "2.0.0"
 hilt = "2.51.1"
@@ -30,6 +31,7 @@ turbine = "1.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-viewmodel-testing = { module = "androidx.lifecycle:lifecycle-viewmodel-testing", version.ref = "lifecycleViewmodelTesting" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
